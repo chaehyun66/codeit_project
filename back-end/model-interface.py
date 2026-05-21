@@ -26,13 +26,13 @@ def predict_review(review_text):
     # 글자 수가 5글자 이하로 극단적으로 짧은 경우 검사
     if len(clean_txt) <= 5:
         # 명확한 부정 단어가 포함되어 있다면 AI한테 묻지도 않고 바로 부정(0) 컷!
-        if any(bad_word in clean_txt for bad_word in ['나빠요', '실망', '최악', '별로', '노답', '비추', '안좋아', '별루']):
+        if any(bad_word in clean_txt for bad_word in ['나빠요', '실망', '최악', '별로', '노답', '비추', '안좋아', '별루','붐따']):
             return {
                 "sentiment": "부정",
                 "score": 1.0  # 사람이 확신하는 100%이므로 1.0 부여
             }
         # 명확한 긍정 단어가 포함되어 있다면 바로 긍정(1) 컷!
-        elif any(good_word in clean_txt for good_word in ['조아', '좋아', '최고', '추천', '스껄', '야르', '존맛', '대박']):
+        elif any(good_word in clean_txt for good_word in ['조아', '좋아', '최고', '추천', '스껄', '야르', '존맛', '대박','붐업']):
             return {
                 "sentiment": "긍정",
                 "score": 1.0
